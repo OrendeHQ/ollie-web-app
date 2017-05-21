@@ -38,6 +38,7 @@
     "require": true,
     "process": true,
     "global": true,
-    "module": true
+    "module": true,
+    "exports": true
   }
 }

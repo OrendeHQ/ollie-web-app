@@ -3,12 +3,8 @@ if (devMode) require('dotenv').load();
 
 const path = require('path');
 const express = require('express');
-const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const routes = require('./routes');
-
-mongoose.connect(process.env.DB, { server: { auto_reconnect: true } });
-mongoose.Promise = global.Promise;
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
