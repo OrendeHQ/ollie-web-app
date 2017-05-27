@@ -11,8 +11,10 @@ export function getToken(username, password) {
     }).then((res) => {
       if (res.status === 200) {
         res.json()
-          .then((r) => dispatch(successfullyGetToken(r.token)))
-          .then(() => dispatch(push('/')));
+          .then((r) => {
+            dispatch(successfullyGetToken(r.token));
+            dispatch(push(r.redirect));
+          });
       } else {
         res.json().then((r) => dispatch(failedGetToken(r.message)));
       }

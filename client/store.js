@@ -12,7 +12,8 @@ const token = tokenVal
   : { status: NONE, value: '', error: '' };
 
 const defaultState = {
-  token
+  token,
+  series: { status: NONE, value: [], error: '' }
 };
 
 export const history = createHistory();
