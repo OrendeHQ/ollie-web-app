@@ -4,7 +4,7 @@ import { NONE, LOADING, SUCCESS, FAIL } from '../constants/ajaxStatus';
 export default function token(state={}, action) {
   switch (action.type) {
     case TOKEN_LOADING:
-      return { status: LOADING };
+      return { status: LOADING, value: '', error: '' };
     case TOKEN_SUCCESS:
       localStorage.setItem('token', action.token);
       return { status: SUCCESS, value: action.token, error: '' };

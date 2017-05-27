@@ -1,4 +1,4 @@
-const User = require('../db/models/user');
+const { User } = require('../db/models');
 const jwt = require('jsonwebtoken');
 
 module.exports = {
@@ -12,8 +12,8 @@ module.exports = {
     const hashedPassword = User.generateHash(password);
     new User({ username, email, password: hashedPassword }).save().then((user) => {
       const token = jwt.sign(user, process.env.SECRET, { expiresIn: '168h' });
-      res.status(200).json({ token });
-    }).catch((err) =>{
+      res.status(200).json({ token, redirect: '/' });
+    }).catch((err) => {
       res.status(500).json({ message: JSON.stringify(err) });
     });
   },
@@ -28,7 +28,7 @@ module.exports = {
       user = user.attributes;
       if (!User.checkPassword(password, user.password)) return res.status(403).json({ message: 'Invalid Credentials' });
       const token = jwt.sign(user, process.env.SECRET, { expiresIn: '168h' });
-      res.status(200).json({ token });
+      res.status(200).json({ token , redirect: user.admin ? '/admin': '/' });
     }).catch((err) => {
       res.status(500).json({ message: JSON.stringify(err) });
     });

@@ -41,3 +41,6 @@ jspm_packages
 
 # bundled frontend stuffs
 dist
+
+# temporary folder
+tmp
