@@ -13,7 +13,7 @@ module.exports = {
     new User({ username, email, password: hashedPassword }).save().then((user) => {
       const token = jwt.sign(user, process.env.SECRET, { expiresIn: '168h' });
       res.status(200).json({ token });
-    }).catch((err) =>{
+    }).catch((err) => {
       res.status(500).json({ message: JSON.stringify(err) });
     });
   },

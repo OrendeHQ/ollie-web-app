@@ -3,7 +3,7 @@ const bookshelf = require('./index');
 const Item = bookshelf.Model.extend({
   tableName: 'items',
   series() {
-    this.belongsTo('Series');
+    return this.belongsTo('Series');
   }
 });
 
