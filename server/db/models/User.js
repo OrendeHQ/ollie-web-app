@@ -1,4 +1,4 @@
-const bookshelf = require('./index');
+const bookshelf = require('./bookshelf');
 const bcrypt = require('bcryptjs');
 
 const User = bookshelf.Model.extend({

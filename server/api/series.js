@@ -1,5 +1,4 @@
-const Series = require('../db/models/Series');
-const Item = require('../db/models/Item');
+const { Series } = require('../db/models');
 
 module.exports = {
 

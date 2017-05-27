@@ -22,15 +22,15 @@ exports.up = function(knex, Promise) {
       table.string('lamp_base').notNullable();
       table.integer('lamp_life').notNullable();
       table.string('color_temp').notNullable();
-      table.decimal('price', 2).notNullable();
+      table.decimal('price').notNullable();
     })
   ]);
 };
 
 exports.down = function(knex, Promise) {
   return Promise.all([
-    knex.schema.dropTable('items'),
-    knex.schema.dropTable('series'),
+    knex.schema.dropTableIfExists('items'),
+    knex.schema.dropTableIfExists('series'),
     knex.schema.table('users', (table) => {
       table.dropColumn('address');
       table.dropColumn('city');
